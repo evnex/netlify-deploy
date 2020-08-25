@@ -66,6 +66,7 @@ async function run() {
 
     if (!dryRun) {
       try {
+        process.stderr.write(`siteId ${siteId} , buildDir, ${buildDir}, ${netlifyAuthToken}.\n`);
         const deployment = await netlifyClient.deploy(siteId, path.resolve(process.cwd(), buildDir), {
           functionsDir,
           configPath,

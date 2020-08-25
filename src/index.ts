@@ -66,7 +66,6 @@ async function run() {
 
     if (!dryRun) {
       try {
-        process.stderr.write(`siteId ${siteId} , buildDir, ${buildDir}, ${netlifyAuthToken}.\n`);
         const deployment = await netlifyClient.deploy(siteId, path.resolve(process.cwd(), buildDir), {
           functionsDir,
           configPath,
@@ -76,6 +75,8 @@ async function run() {
 
         deploy = deployment.deploy;
       } catch (error) {
+        process.stderr.write(`siteId ${siteId} , buildDir, ${buildDir}, ${netlifyAuthToken} \n`);
+        process.stderr.write(`functionsDir ${functionsDir} , configPath, ${configPath}, ${draft},  ${message} \n`);
         process.stderr.write('netlifyClient.deploy() failed\n');
         process.stderr.write(`${JSON.stringify(error, null, 2)}\n`);
         core.setFailed(error.message);

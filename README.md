@@ -1,4 +1,4 @@
-# netlify-deploy
+# netlify-deploy action
 
 🙌 Deploys a build to Netlify and can comment on the commit or PR with the URL
 
